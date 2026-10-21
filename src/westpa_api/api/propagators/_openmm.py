@@ -25,9 +25,11 @@ class OpenMMPropagator(SerialPropagator):
     To create an initial state for this propagator,
     `save <https://docs.openmm.org/latest/api-python/generated/openmm.app.simulation.Simulation.html#openmm.app.simulation.Simulation.saveState>`_
     an OpenMM state to an XML file, and pass the absolute file path to the
-    :class:`State` constructor's `file` parameter::
+    :class:`State` constructor's `file` parameter:
 
-        state = westpa.State(file=os.path.abspath('state.xml'))
+    >>> import os.path
+    >>> import westpa.api as we
+    >>> state = we.State(file=os.path.abspath('state.xml'))
 
     Parameters
     ----------
@@ -54,12 +56,12 @@ class OpenMMPropagator(SerialPropagator):
 
     Create a propagator that runs 2 ps of Langevin dynamics at 300 K:
 
-    >>> import westpa
+    >>> import westpa.api as we
     >>> import openmm.app
     >>> from openmm import unit
     >>> pdb = openmm.app.PDBFile('topology.pdb')
     >>> forcefield = openmm.app.ForceField('amber14-all.xml')
-    >>> propagator = westpa.OpenMMPropagator(
+    >>> propagator = we.OpenMMPropagator(
     ...     topology=pdb.topology,
     ...     system=forcefield.createSystem(
     ...         pdb.topology,

@@ -33,15 +33,15 @@ class Source(Sequence):
     Examples
     --------
 
-    >>> import westpa
-    >>> states = [westpa.State([0.]), westpa.State([1.])]
-    >>> source = westpa.Source(states)
+    >>> import westpa.api as we
+    >>> states = [we.State([0.]), we.State([1.])]
+    >>> source = we.Source(states)
     >>> source
     <Source with 2 states, p=[0.5, 0.5] at 0x30218eea0>
 
     Nonuniform selection probabilities:
 
-    >>> source = westpa.Source(states, p=[0.7, 0.3])
+    >>> source = we.Source(states, p=[0.7, 0.3])
     >>> source
     <Source with 2 states, p=[0.7, 0.3] at 0x3022720A0>
 
@@ -146,14 +146,14 @@ class Sink(Container):
     Create a sink for walkers with final (-1), first-dimension (0)
     progress coordinate values greater than 1.0:
 
-    >>> import westpa
-    >>> sink = westpa.Sink(lambda segment: segment.pcoord[-1, 0] > 1.0)
+    >>> import westpa.api as we
+    >>> sink = we.Sink(lambda segment: segment.pcoord[-1, 0] > 1.0)
 
     Test for membership:
 
-    >>> westpa.Segment(pcoord=[[1.0], [0.9]]) in sink
+    >>> we.Segment(pcoord=[[1.0], [0.9]]) in sink
     False
-    >>> westpa.Segment(pcoord=[[1.0], [1.1]]) in sink
+    >>> we.Segment(pcoord=[[1.0], [1.1]]) in sink
     True
 
     """

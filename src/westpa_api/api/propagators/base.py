@@ -134,8 +134,8 @@ class SerialPropagator(_PropagatorBase):
     --------
     Create a propagator that simulates a random walk on the integers:
 
-    >>> import westpa
-    >>> class RandomWalkPropagator(westpa.SerialPropagator):
+    >>> import westpa.api as we
+    >>> class RandomWalkPropagator(we.SerialPropagator):
     ...     def __init__(self, p=0.5, steps=1, **kwargs):
     ...         super().__init__(**kwargs)
     ...         self.p = [p, 1 - p]
@@ -150,8 +150,8 @@ class SerialPropagator(_PropagatorBase):
 
     Propagate a test segment:
 
-    >>> state = westpa.State(coord=[0])
-    >>> segment = westpa.Segment(n_iter=1, seg_id=0, initial_state=state)
+    >>> state = we.State(coord=[0])
+    >>> segment = we.Segment(n_iter=1, seg_id=0, initial_state=state)
     >>> segment, = propagator([segment])
     >>> segment.final_state.coord
     array([-8])
@@ -246,8 +246,8 @@ class VectorizedPropagator(_PropagatorBase):
     --------
     Create a propagator that simulates a random walk on the integers:
 
-    >>> import westpa
-    >>> class RandomWalkPropagator(westpa.VectorizedPropagator):
+    >>> import westpa.api as we
+    >>> class RandomWalkPropagator(we.VectorizedPropagator):
     ...     def __init__(self, p=0.5, steps=1, **kwargs):
     ...         super().__init__(**kwargs)
     ...         self.p = [p, 1 - p]
@@ -265,8 +265,8 @@ class VectorizedPropagator(_PropagatorBase):
 
     Propagate a test segment:
 
-    >>> state = westpa.State(coord=[0])
-    >>> segment = westpa.Segment(n_iter=1, seg_id=0, initial_state=state)
+    >>> state = we.State(coord=[0])
+    >>> segment = we.Segment(n_iter=1, seg_id=0, initial_state=state)
     >>> segment, = propagator([segment])
     >>> segment.final_state.coord
     array([-8])

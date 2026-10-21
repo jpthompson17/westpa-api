@@ -1,3 +1,12 @@
+import logging
+
+import numpy as np
+
+logger = logging.getLogger(__name__)
+
+EPS = np.finfo(np.float64).eps
+
+
 import numpy as np
 
 
@@ -29,16 +38,16 @@ class State:
     Examples
     --------
 
-    >>> import westpa
+    >>> import westpa.api as we
 
     Coordinates in memory:
 
-    >>> westpa.State(coord=[0., 0.])
+    >>> we.State(coord=[0., 0.])
     State(coord=array([0., 0.]))
 
     Coordinates on disk:
 
-    >>> westpa.State(file='/path/to/file.xyz'))
+    >>> we.State(file='/path/to/file.xyz'))
     State(file='/path/to/file.xyz')
 
     """

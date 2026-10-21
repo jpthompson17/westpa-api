@@ -3,9 +3,9 @@ from typing import runtime_checkable, Protocol
 
 from numpy.typing import ArrayLike
 
-from westpa.core.binning import Bin
-from westpa.core.segment import Segment
-from westpa.core.state import State
+from .bin import Bin
+from .segment import Segment
+from .state import State
 
 
 @runtime_checkable
@@ -96,13 +96,13 @@ class PCoordCalculator(Protocol):
 
         Examples
         --------
-        >>> import westpa
+        >>> import westpa.api as we
 
         Use the raw coordinates as progress coordinates (as :class:`Simulation`
         does by default):
 
         >>> def default_pcoord_calculator(obj):
-        ...     if isinstance(obj, westpa.State):
+        ...     if isinstance(obj, we.State):
         ...         return obj.coord
         ...     else:
         ...         return obj.initial_state.coord, obj.final_state.coord

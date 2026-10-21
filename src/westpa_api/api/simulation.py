@@ -11,13 +11,15 @@ from datetime import timedelta
 
 import numpy as np
 
+from ._data_manager import DataManager
 from .state import State
 from .segment import Segment
-from .binning import Bin, NopMapper
-from .resamplers import HuberKimResampler
+from .bin import Bin
 from .source_sink import Source, Sink
 from .protocols import Propagator, PCoordCalculator, BinMapper, Resampler
-from ._data_manager import DataManager
+from .resamplers import HuberKimResampler
+
+from westpa.core.binning import NopMapper
 
 logger = logging.getLogger(__name__)
 

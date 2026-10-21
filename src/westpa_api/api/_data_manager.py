@@ -13,7 +13,7 @@ from westpa.core.data_manager import (
     normalize_dataset_options,
     require_dataset_from_dsopts,
 )
-from westpa.core.state import State
+from .state import State
 
 logger = logging.getLogger(__name__)
 

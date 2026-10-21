@@ -16,9 +16,11 @@ class AmberPropagator(SerialPropagator):
     """`Amber <https://ambermd.org/>`_-based molecular dynamics propagator.
 
     To create an initial state for this propagator, pass the absolute path of
-    an Amber coordinate file to the :class:`State` constructor's `file` parameter::
+    an Amber coordinate file to the :class:`State` constructor's `file` parameter:
 
-        state = westpa.State(file=os.path.abspath('inpcrd'))
+    >>> import os.path
+    >>> import westpa.api as we
+    >>> state = we.State(file=os.path.abspath('coord.inpcrd'))
 
     Parameters
     ----------
@@ -39,8 +41,8 @@ class AmberPropagator(SerialPropagator):
     Examples
     --------
 
-    >>> import westpa
-    >>> propagator = westpa.AmberPropagator('prmtop', 'mdin')
+    >>> import westpa.api as we
+    >>> propagator = we.AmberPropagator('system.prmtop', 'md.mdin')
 
     """
 
