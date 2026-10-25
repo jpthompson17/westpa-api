@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "westpa-api"
+version = "0.9"
+requires-python = ">=3.11"
+dependencies = [
+    "westpa",
+    "f90nml",
+    "matplotlib",
+    "networkx",
+    "numpy",
+    "pygraphviz",
+    "sortedcontainers",
+]
+description = "Python API for the WESTPA simulation toolkit (pre-release)."
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: POSIX",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+
+
+[project.optional-dependencies]
+openmm = ["openmm"]
+dev = ["pytest", "sphinx", "pydata-sphinx-theme", "numpydoc"]
+
+[project.urls]
+Repository = "https://github.com/jpthompson17/westpa-api"
