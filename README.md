@@ -4,14 +4,15 @@ A simplified Python API for running weighted ensemble (WE) simulations in
 the [WESTPA](https://westpa.github.io/westpa/) framework.
 
 > [!WARNING]
-> The `westpa-api` package is available as a pre-release to facilitate
-> user testing of features proposed for a future
-> release of the WESTPA package. Its Python API and HDF5 file schema
-> are currently in flux and subject to change without notice between 
+> This package is available as a pre-release to gather user feedback
+> on features proposed for inclusion in a future, stable/production
+> release of WESTPA. 
+> The Python API and HDF5 file structure defined by ``westpa-api``
+> are currently in flux and subject to change without notice between
 > pre-release versions.
 >
-> The [`westpa`](https://github.com/westpa/westpa) base package, which
-> provides the stable reference implementation of WESTPA, 
+> The [`westpa`](https://github.com/westpa/westpa) base package,
+> which provides the stable reference implementation of WESTPA, 
 > should be used in production environments.
 
 
@@ -49,13 +50,14 @@ def pcoord_calculator(gro_file):
     top = md.load(gro_file).topology
     
     def get_distance(obj):
+        atom_pairs = [[0, 1]]
         if isinstance(obj, we.State):
             t = md.load(obj.file, top=top)
-            return md.compute_distances(t, [[0, 1]])[0]
-        else:
+            return md.compute_distances(t, atom_pairs)[0]
+        elif isinstance(obj, we.Segment):
             files = [obj.initial_state.file, obj.final_state.file]
             t = md.load(files, top=top)
-            return md.compute_distances(t, [[0, 1]])
+            return md.compute_distances(t, atom_pairs)
         
     return get_distance
     
