@@ -28,7 +28,7 @@ class OpenMMPropagator(SerialPropagator):
     :class:`State` constructor's `file` parameter:
 
     >>> import os.path
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> state = we.State(file=os.path.abspath('state.xml'))
 
     Parameters
@@ -56,7 +56,7 @@ class OpenMMPropagator(SerialPropagator):
 
     Create a propagator that runs 2 ps of Langevin dynamics at 300 K:
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> import openmm.app
     >>> from openmm import unit
     >>> pdb = openmm.app.PDBFile('topology.pdb')

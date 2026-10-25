@@ -38,7 +38,7 @@ class State:
     Examples
     --------
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
 
     Coordinates in memory:
 

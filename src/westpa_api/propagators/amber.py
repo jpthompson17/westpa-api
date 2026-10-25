@@ -19,7 +19,7 @@ class AmberPropagator(SerialPropagator):
     an Amber coordinate file to the :class:`State` constructor's `file` parameter:
 
     >>> import os.path
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> state = we.State(file=os.path.abspath('coord.inpcrd'))
 
     Parameters
@@ -41,7 +41,7 @@ class AmberPropagator(SerialPropagator):
     Examples
     --------
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> propagator = we.AmberPropagator('system.prmtop', 'md.mdin')
 
     """

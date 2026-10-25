@@ -33,7 +33,7 @@ class Source(Sequence):
     Examples
     --------
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> states = [we.State([0.]), we.State([1.])]
     >>> source = we.Source(states)
     >>> source
@@ -146,7 +146,7 @@ class Sink(Container):
     Create a sink for walkers with final (-1), first-dimension (0)
     progress coordinate values greater than 1.0:
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> sink = we.Sink(lambda segment: segment.pcoord[-1, 0] > 1.0)
 
     Test for membership:

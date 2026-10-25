@@ -15,7 +15,7 @@ class GROMACSPropagator(SerialPropagator):
     a GROMACS coordinate file to the :class:`State` constructor's `file` parameter:
 
     >>> import os.path
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> state = we.State(file=os.path.abspath('conf.gro'))
 
     Parameters
@@ -36,7 +36,7 @@ class GROMACSPropagator(SerialPropagator):
 
     Examples
     --------
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> propagator = we.GROMACSPropagator('topol.top', 'grompp.mdp')
 
     """

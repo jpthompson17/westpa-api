@@ -34,7 +34,7 @@ class Bin(MutableSet, Sequence):
 
     Create a bin containing three segments:
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> segments = [we.Segment(weight=weight) for weight in [0.3, 0.1, 0.2]]
     >>> bin_ = we.Bin(segments)
     >>> bin_.weights()

@@ -134,7 +134,7 @@ class SerialPropagator(_PropagatorBase):
     --------
     Create a propagator that simulates a random walk on the integers:
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> class RandomWalkPropagator(we.SerialPropagator):
     ...     def __init__(self, p=0.5, steps=1, **kwargs):
     ...         super().__init__(**kwargs)
@@ -246,7 +246,7 @@ class VectorizedPropagator(_PropagatorBase):
     --------
     Create a propagator that simulates a random walk on the integers:
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> class RandomWalkPropagator(we.VectorizedPropagator):
     ...     def __init__(self, p=0.5, steps=1, **kwargs):
     ...         super().__init__(**kwargs)

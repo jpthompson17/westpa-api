@@ -28,7 +28,7 @@ class BinMapperBase(ABC):
     Examples
     --------
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> class TwoBinMapper(we.BinMapperBase):
     ...     @property
     ...     def labels(self):

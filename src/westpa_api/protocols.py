@@ -96,7 +96,7 @@ class PCoordCalculator(Protocol):
 
         Examples
         --------
-        >>> import westpa.api as we
+        >>> import westpa_api as we
 
         Use the raw coordinates as progress coordinates (as :class:`Simulation`
         does by default):

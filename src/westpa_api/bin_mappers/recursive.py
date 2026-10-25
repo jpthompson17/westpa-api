@@ -25,7 +25,7 @@ class RecursiveBinMapper:
 
     Examples
     --------
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> outer_mapper = we.RectilinearBinMapper([[0.0, 1.0, 2.0, 3.0]])
     >>> inner_mapper = we.RectilinearBinMapper([[1.0, 1.5, 2.0]])
     >>> rmapper = we.RecursiveBinMapper(outer_mapper)

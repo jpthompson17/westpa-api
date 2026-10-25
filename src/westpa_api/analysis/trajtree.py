@@ -52,7 +52,7 @@ class TrajectoryTree:
     Examples
     --------
 
-    >>> import westpa.api as we
+    >>> import westpa_api as we
     >>> trajtree = we.TrajectoryTree('west.h5')
 
     Retrieve a single segment:
