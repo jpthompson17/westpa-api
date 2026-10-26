@@ -17,9 +17,10 @@ from .segment import Segment
 from .bin import Bin
 from .source_sink import Source, Sink
 from .protocols import Propagator, PCoordCalculator, BinMapper, Resampler
+from .bin_mappers import NOPBinMapper
 from .resamplers import HuberKimResampler
 
-from westpa.core.binning import NopMapper
+from westpa.core.states import BasisState
 
 logger = logging.getLogger(__name__)
 
@@ -190,7 +191,7 @@ class Simulation:
 
         self.propagator = propagator
         self.pcoord_calculator = pcoord_calculator or default_pcoord_calculator
-        self.bin_mapper = bin_mapper or NopMapper()
+        self.bin_mapper = bin_mapper or NOPBinMapper()
         self.bin_target_counts = bin_target_counts
         self.resampler = resampler or HuberKimResampler()
 

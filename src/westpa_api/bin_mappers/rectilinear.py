@@ -1,4 +1,5 @@
-import westpa.core.binning
+from westpa.core.binning import RectilinearBinMapper as _RectilinearBinMapper, index_dtype
+
 from .base import BinMapperBase
 
 
@@ -37,11 +38,11 @@ class RectilinearBinMapper(BinMapperBase):
 
     def __init__(self, boundaries, **kwargs):
         super().__init__(**kwargs)
-        self._mapper = westpa.core.binning.RectilinearBinMapper(boundaries)
+        self._mapper = _RectilinearBinMapper(boundaries)
 
     @property
     def labels(self):
         return iter(self._mapper.labels)
 
     def assign(self, coords, weights, output):
-        return self._mapper.assign(coords, mask=None, output=output)
+        return self._mapper.assign(coords, None, output.astype(index_dtype))

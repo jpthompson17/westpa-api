@@ -15,10 +15,11 @@ __all__ = [
     'OpenMMPropagator',
     'PCoordCalculator',
     'BinMapper',
-    'RectilinearBinMapper',
-    'VoronoiBinMapper',
     'BinMapperBase',
     'RecursiveBinMapper',
+    'NOPBinMapper',
+    'RectilinearBinMapper',
+    'VoronoiBinMapper',
     'Resampler',
     'ResamplerBase',
     'HuberKimResampler',
@@ -46,6 +47,7 @@ from .propagators import (
 from .bin_mappers import (
     BinMapperBase,
     RecursiveBinMapper,
+    NOPBinMapper,
     RectilinearBinMapper,
     VoronoiBinMapper,
 )

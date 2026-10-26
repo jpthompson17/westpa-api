@@ -1,4 +1,5 @@
-import westpa.core.binning
+from westpa.core.binning import VoronoiBinMapper as _VoronoiBinMapper, index_dtype
+
 from .base import BinMapperBase
 
 
@@ -41,7 +42,7 @@ class VoronoiBinMapper(BinMapperBase):
 
     def __init__(self, centers, dfunc, dfargs=None, dfkwargs=None, **kwargs):
         super().__init__(**kwargs)
-        self._mapper = westpa.core.binning.VoronoiBinMapper(
+        self._mapper = _VoronoiBinMapper(
             dfunc=dfunc,
             centers=centers,
             dfargs=dfargs,
@@ -53,4 +54,4 @@ class VoronoiBinMapper(BinMapperBase):
         return iter(self._mapper.labels)
 
     def assign(self, coords, weights, output):
-        return self._mapper.assign(coords, mask=None, output=output)
+        return self._mapper.assign(coords, None, output.astype(index_dtype))
