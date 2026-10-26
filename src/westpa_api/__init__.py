@@ -17,7 +17,6 @@ __all__ = [
     'BinMapper',
     'RectilinearBinMapper',
     'VoronoiBinMapper',
-    'MABBinMapper',
     'BinMapperBase',
     'RecursiveBinMapper',
     'Resampler',
@@ -30,22 +29,27 @@ __all__ = [
     'MDStoragePlugin',
 ]
 
-from westpa_api.state import State
-from westpa_api.segment import Segment
-from westpa_api.source_sink import Source, Sink
-from westpa_api.bin import Bin
-from westpa_api.simulation import Simulation
-from westpa_api.analysis import TrajectoryTree, TrajectoryTreeView
-from westpa_api.protocols import Propagator, PCoordCalculator, BinMapper, Resampler
-from westpa_api.propagators import (
+from .state import State
+from .segment import Segment
+from .source_sink import Source, Sink
+from .bin import Bin
+from .simulation import Simulation
+from .analysis import TrajectoryTree, TrajectoryTreeView
+from .protocols import Propagator, PCoordCalculator, BinMapper, Resampler
+from .propagators import (
     SerialPropagator,
     VectorizedPropagator,
     AmberPropagator,
     GROMACSPropagator,
     OpenMMPropagator,
 )
-from westpa_api.bin_mappers import BinMapperBase, RecursiveBinMapper
-from westpa_api.resamplers import (
+from .bin_mappers import (
+    BinMapperBase,
+    RecursiveBinMapper,
+    RectilinearBinMapper,
+    VoronoiBinMapper,
+)
+from .resamplers import (
     ResamplerBase,
     HuberKimResampler,
     MultinomialResampler,
@@ -53,10 +57,4 @@ from westpa_api.resamplers import (
     StratifiedResampler,
     SystematicResampler,
 )
-from westpa_api.plugins import MDStoragePlugin
-
-from westpa.core.binning import (
-    RectilinearBinMapper,
-    VoronoiBinMapper,
-    MABBinMapper,
-)
+from .plugins import MDStoragePlugin

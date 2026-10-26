@@ -22,8 +22,7 @@ class BinMapperBase(ABC):
     nbins : int
         Number of bins mapped to.
     coord_getter : callable
-        Function that returns the coordinate time series to use for binning
-        a segment.
+        Function for retrieving binning coordinates.
 
     Examples
     --------
@@ -69,16 +68,16 @@ class BinMapperBase(ABC):
 
         Parameters
         ----------
-        coords : numpy.ndarray of shape (n, d)
-            Coordinates of each walker.
-        weights : numpy.ndarray of shape (n,)
+        coords : 2-D numpy.ndarray
+            Coordinate point of each walker.
+        weights : 1-D numpy.ndarray
             Weight of each walker.
-        output : numpy.ndarray of shape (n,)
+        output : 1-D numpy.ndarray
             Array for storing output, initialized to -1.
 
         Returns
         -------
-        output : numpy.ndarray of shape (n,)
+        output : 1-D numpy.ndarray
             Bin assignment for each walker. Array elements must be in
             ``range(self.nbins)``.
 
