@@ -1,12 +1,11 @@
 # `westpa-api-0.9`
 
-A simplified Python API for running weighted ensemble (WE) simulations in 
+A simplified Python API for running weighted ensemble simulations in 
 the [WESTPA](https://westpa.github.io/westpa/) framework.
 
 > [!WARNING]
 > This package is available as a pre-release to gather user feedback
-> on features proposed for inclusion in a future, stable/production
-> release of WESTPA. 
+> on features proposed for inclusion in a future release of WESTPA.
 > The Python API and HDF5 file structure defined by ``westpa-api``
 > are currently in flux and subject to change without notice between
 > pre-release versions.
@@ -31,7 +30,7 @@ The example below is an adaptation of the
 tutorial. It requires
 [GROMACS](https://www.gromacs.org/)
 for running molecular dynamics and 
-[MDTraj](https://www.mdtraj.org/) for computing the progress coordinate.
+[MDTraj](https://www.mdtraj.org/) for computing progress coordinates.
 The current working directory (the simulation root folder) is assumed
 to contain the following initial files:
 
