@@ -46,20 +46,14 @@ import os
 import mdtraj as md
 import westpa_api as we
 
-def pcoord_calculator(gro_file):
-    top = md.load(gro_file).topology
-    
-    def get_distance(obj):
-        atom_pairs = [[0, 1]]
-        if isinstance(obj, we.State):
-            t = md.load(obj.file, top=top)
-            return md.compute_distances(t, atom_pairs)[0]
-        elif isinstance(obj, we.Segment):
-            files = [obj.initial_state.file, obj.final_state.file]
-            t = md.load(files, top=top)
-            return md.compute_distances(t, atom_pairs)
-        
-    return get_distance
+def get_distance(obj):
+    atom_pair = [0, 1]
+    if isinstance(obj, we.State):
+        t = md.load(obj.file)
+        return md.compute_distances(t, [atom_pair])[0]
+    elif isinstance(obj, we.Segment):
+        t = md.load([obj.initial_state.file, obj.final_state.file])
+        return md.compute_distances(t, [atom_pair])
     
 def is_bound(segment):
     return segment.pcoord[-1, 0] < 0.26
@@ -69,7 +63,7 @@ initial_state = we.State(file=os.path.abspath('conf.gro'))
 sim = we.Simulation(
     datafile='west.h5',
     propagator=we.GROMACSPropagator('topol.top', 'grompp.mdp'),
-    pcoord_calculator=pcoord_calculator('conf.gro'),
+    pcoord_calculator=get_distance,
     bin_mapper=we.RectilinearBinMapper([[
         0.0, 0.26, 0.28, 0.3, 0.32, 0.34, 0.36, 0.38,
         0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.8, 0.9, 1.0,
