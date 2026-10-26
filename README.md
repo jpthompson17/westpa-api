@@ -42,7 +42,8 @@ to contain the following initial files:
 
 
 ```python
-import os
+import os.path
+import concurrent.futures
 import mdtraj as md
 import westpa_api as we
 
@@ -71,6 +72,7 @@ sim = we.Simulation(
     bin_target_counts=2,
     source=we.Source(initial_state),
     sink=we.Sink(indicator=is_bound, label='bound'),
+    executor=concurrent.futures.ProcessPoolExecutor(),
 )
 
 sim.initialize(initial_state)
