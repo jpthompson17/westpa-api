@@ -644,7 +644,7 @@ class Simulation:
                 else:
                     parent = None
 
-                future = self.executor.submit(self.pcoord_calculator, segment, parent)
+                future = self.executor.submit(self.pcoord_calculator, segment)
                 future_map[future] = segment
         else:
             for segment in segments:
