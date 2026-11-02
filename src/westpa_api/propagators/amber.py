@@ -15,12 +15,10 @@ logger = logging.getLogger(__name__)
 class AmberPropagator(SerialPropagator):
     """`Amber <https://ambermd.org/>`_-based molecular dynamics propagator.
 
-    To create an initial state for this propagator, pass the absolute path of
-    an Amber coordinate file to the :class:`State` constructor's `file` parameter:
+    To create an initial state for this propagator, pass an Amber coordinate
+    file to the :class:`State` constructor, for example::
 
-    >>> import os.path
-    >>> import westpa_api as we
-    >>> state = we.State(file=os.path.abspath('coord.inpcrd'))
+        state = westpa_api.State(file='coord.inpcrd')
 
     Parameters
     ----------

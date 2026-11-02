@@ -24,12 +24,10 @@ class OpenMMPropagator(SerialPropagator):
 
     To create an initial state for this propagator,
     `save <https://docs.openmm.org/latest/api-python/generated/openmm.app.simulation.Simulation.html#openmm.app.simulation.Simulation.saveState>`_
-    an OpenMM state to an XML file, and pass the absolute file path to the
-    :class:`State` constructor's `file` parameter:
+    an OpenMM state to an XML file, and pass the file to the :class:`State`
+    constructor, for example::
 
-    >>> import os.path
-    >>> import westpa_api as we
-    >>> state = we.State(file=os.path.abspath('state.xml'))
+        state = westpa_api.State(file='state.xml')
 
     Parameters
     ----------

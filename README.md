@@ -58,7 +58,7 @@ def get_distance(obj):
 def is_bound(segment):
     return segment.pcoord[-1, 0] < 0.26
 
-initial_state = we.State(file=os.path.abspath('conf.gro'))
+initial_state = we.State(file='conf.gro')
     
 sim = we.Simulation(
     datafile='west.h5',

@@ -11,12 +11,10 @@ from ..state import State
 class GROMACSPropagator(SerialPropagator):
     """`GROMACS <https://www.gromacs.org/>`_-based molecular dynamics propagator.
 
-    To create an initial state for this propagator, pass the absolute path of
-    a GROMACS coordinate file to the :class:`State` constructor's `file` parameter:
+    To create an initial state for this propagator, pass a GROMACS coordinate file
+    to the :class:`State` constructor, for example::
 
-    >>> import os.path
-    >>> import westpa_api as we
-    >>> state = we.State(file=os.path.abspath('conf.gro'))
+        state = westpa_api.State(file='conf.gro')
 
     Parameters
     ----------

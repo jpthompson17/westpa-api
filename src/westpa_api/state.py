@@ -1,4 +1,6 @@
 import logging
+import os.path
+from urllib.parse import urlparse
 
 import numpy as np
 
@@ -7,7 +9,9 @@ logger = logging.getLogger(__name__)
 EPS = np.finfo(np.float64).eps
 
 
-import numpy as np
+def _is_url(string):
+    result = urlparse(string)
+    return result.scheme and result.netloc
 
 
 class State:
@@ -25,8 +29,9 @@ class State:
         space) and data type are determined by the propagator.
     file : str, optional
         Address of a file containing coordinate data for the state. The format
-        of the address (e.g., absolute path or URL) and the file format are
-        determined by the propagator.
+        of the address (local path or web URL) and the file format are
+        determined by the propagator. Relative paths are automatically
+        converted to absolute paths.
 
     Attributes
     ----------
@@ -63,9 +68,14 @@ class State:
             if coord.ndim != 1:
                 raise ValueError("'coord' must be a 1-D array")
             coord.flags.writeable = False
+        else:
+            if not _is_url(file):
+                file = os.path.abspath(file)
+            if not isinstance(file, str):
+                file = file.decode('utf-8')
 
         self._coord = coord
-        self._file = str(file) if file is not None else None
+        self._file = file
 
     @property
     def coord(self):
