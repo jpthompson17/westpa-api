@@ -32,6 +32,8 @@ class HuberKimResampler(ResamplerBase):
 
     """
 
+    _check = False
+
     split_threshold = 2.0
     merge_cutoff = 1.0
 
