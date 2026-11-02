@@ -1,7 +1,7 @@
 from collections.abc import Iterable, Mapping, Sequence
 from typing import runtime_checkable, Protocol
 
-from numpy.typing import ArrayLike
+from numpy.typing import ArrayLike, NDArray
 
 from .bin import Bin
 from .segment import Segment
@@ -162,7 +162,7 @@ class BinMapper(Protocol):
 
         Returns
         -------
-        assignments : 1-D array_like of integer type
+        assignments : 1-D array_like of integers
             Bin assignment for each segment. Array elements must be in
             ``range(self.nbins)``.
 
@@ -187,20 +187,22 @@ class Resampler(Protocol):
 
     """
 
-    def __call__(self, bin_: Bin, target_count: int) -> Bin:
-        """Resample the trajectories in a given bin.
+    def __call__(self, bins: Sequence[Bin], target_counts: NDArray) -> Sequence[Bin]:
+        """Resample the segments in each of the given bins.
 
         Parameters
         ----------
-        bin_ : Bin
-            Bin to be resampled.
-        target_count : int
-            Target number of trajectories for the bin.
+        bins : sequence of Bin
+            Bins containing the segments to be resampled.
+        target_counts : 1-D numpy.ndarray of unsigned integers
+            Target number of segments for each bin.
 
         Returns
         -------
-        bin_ : Bin
-            Resampled bin.
+        bins : iterable of Bin
+            Bins containing the resampled segments. The length of the returned
+            iterable must match the length of the input sequence of bins.
+            Resampling must preserve the weight of each bin.
 
         """
         ...

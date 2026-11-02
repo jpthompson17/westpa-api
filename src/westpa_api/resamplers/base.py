@@ -70,19 +70,20 @@ class ResamplerBase(abc.ABC):
 
     @abc.abstractmethod
     def resample(self, bin_, target_count):
-        """Resample the trajectories in a given bin.
+        """Resample the segments in a given bin.
 
         Parameters
         ----------
         bin_ : Bin
-            Bin to resample.
+            Bin containing the segments to be resampled.
         target_count : int
-            Target number of trajectories for the bin.
+            Target number of segments for the bin.
 
         Returns
         -------
         bin_ : Bin
-            Resampled bin.
+            Bin containing the resampled segments. Resampling must preserve
+            the weight of the bin.
 
         """
         ...
@@ -102,29 +103,31 @@ class ResamplerBase(abc.ABC):
                 return
             bin.merge(to_merge, rng=self.rng)
 
-    def __call__(self, bin, target_count):
-        if not bin:
-            return bin  # skip empty bins
+    def __call__(self, bins, target_counts):
+        for bin, target_count in zip(bins, target_counts):
+            if not bin:  # skip empties
+                yield bin
+                continue
 
-        bin_weight = bin.weight
+            bin_weight = bin.weight
 
-        bin = self.resample(bin, target_count)
+            bin = self.resample(bin, target_count)
 
-        if self._check:
-            weights = bin.weights()
-            if (weights <= 0).any():
-                raise ConsistencyError('weights must be greater than 0')
-            if not np.isclose(weights.sum(), bin_weight):  # TODO: Specify tolerance (atol, rtol).
-                raise ConsistencyError('resampling must preserve the bin weight')
+            if self._check:
+                weights = bin.weights()
+                if (weights <= 0).any():
+                    raise ConsistencyError('weights must be greater than 0')
+                if not np.isclose(weights.sum(), bin_weight):  # TODO: Specify tolerance (atol, rtol).
+                    raise ConsistencyError('resampling must preserve the bin weight')
 
-        if self.thresholds:
-            self._split_by_threshold(bin)
-            self._merge_by_threshold(bin)
-            for segment in bin:
-                if not (self.smallest_allowed_weight <= segment.weight <= self.largest_allowed_weight):
-                    logger.warning(
-                        'Unable to fulfill weight threshold conditions for %s. The given threshold range is likely too small.',
-                        segment,
-                    )
+            if self.thresholds:
+                self._split_by_threshold(bin)
+                self._merge_by_threshold(bin)
+                for segment in bin:
+                    if not (self.smallest_allowed_weight <= segment.weight <= self.largest_allowed_weight):
+                        logger.warning(
+                            'Unable to fulfill weight threshold conditions for %s. The given threshold range is likely too small.',
+                            segment,
+                        )
 
-        return bin
+            yield bin

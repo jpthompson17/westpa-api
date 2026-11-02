@@ -701,7 +701,7 @@ class Simulation:
                 logger.info(f'Recycled {p_recycled} probability ({n_recycled} walkers) from sink {label!r}')
 
         # Resample the remaining walkers.
-        resampled_bins = list(map(self.resampler, bins, target_counts))
+        resampled_bins = self.resampler(bins, target_counts)
 
         self._resampled_segments = list(itertools.chain(*resampled_bins))
 
