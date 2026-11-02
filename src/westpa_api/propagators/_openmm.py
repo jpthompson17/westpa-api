@@ -6,7 +6,7 @@ from dataclasses import dataclass
 import openmm.app
 
 from .base import SerialPropagator
-from westpa.core.state import State
+from ..state import State
 
 logger = logging.getLogger(__name__)
 
