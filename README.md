@@ -3,6 +3,9 @@
 A simplified Python API for running weighted ensemble simulations in 
 the [WESTPA](https://westpa.github.io/westpa/) framework.
 
+- **Documentation:** [https://westpa-api.readthedocs.io](https://westpa-api.readthedocs.io/en/latest/)
+- **Bug reports:** https://github.com/jpthompson17/westpa-api/issues
+
 > [!WARNING]
 > This package is available as a pre-release to gather user feedback
 > on features proposed for inclusion in a future release of WESTPA.
